@@ -10,7 +10,7 @@ import {
   EyeOff,
 } from "lucide-react";
 import { createUser } from "../services/userService";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 import { useNotification } from "../context/NotificationContext";
 
 // Define the User type for useState
