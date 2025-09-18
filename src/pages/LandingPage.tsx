@@ -1,6 +1,5 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { TrendingUp, Bell, Mail, Globe, Target, Shield } from "lucide-react";
+import { TrendingUp, Shield } from "lucide-react";
 
 export default function LandingPage() {
   return (
@@ -59,7 +58,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             <PricingCard
               title="Free"
-              price="$0"
+              price="Rs 0"
               period="forever"
               features={["Up to 30 IPO alerts", "Basic email notifications"]}
               buttonText="Get Started"
@@ -67,8 +66,8 @@ export default function LandingPage() {
             />
             <PricingCard
               title="Pro"
-              price="$3"
-              period="per month"
+              price="Rs 300"
+              period="per year"
               features={[
                 "Unlimited IPO alerts",
                 "Advanced email notifications",
@@ -84,8 +83,8 @@ export default function LandingPage() {
             />
             <PricingCard
               title="Enterprise"
-              price="$99"
-              period="per month"
+              price="Rs 1000"
+              period="per year"
               features={[
                 "Everything in Pro",
                 "API access",
@@ -119,27 +118,27 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border hover:shadow-lg transition-shadow duration-300">
-      <div className="mb-4">{icon}</div>
-      <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3">
-        {title}
-      </h3>
-      <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-        {description}
-      </p>
-    </div>
-  );
-}
+// function FeatureCard({
+//   icon,
+//   title,
+//   description,
+// }: {
+//   icon: React.ReactNode;
+//   title: string;
+//   description: string;
+// }) {
+//   return (
+//     <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border hover:shadow-lg transition-shadow duration-300">
+//       <div className="mb-4">{icon}</div>
+//       <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3">
+//         {title}
+//       </h3>
+//       <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+//         {description}
+//       </p>
+//     </div>
+//   );
+// }
 
 function PricingCard({
   title,

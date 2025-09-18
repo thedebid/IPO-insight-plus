@@ -30,12 +30,13 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { register } = useAuth();
+  // const { register } = useAuth();
   const { addNotification } = useNotification();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    // Temporarily use it to avoid warning
+    console.log(users);
     if (formData.password !== formData.confirmPassword) {
       addNotification({
         type: "error",
