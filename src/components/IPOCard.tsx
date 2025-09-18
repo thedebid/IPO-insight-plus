@@ -1,15 +1,14 @@
-import React from 'react';
-import { Calendar, Globe, Building, TrendingUp, Flag } from 'lucide-react';
+import { Calendar, Globe, Building, TrendingUp, Flag } from "lucide-react";
 
 interface IPO {
   id: string;
   company: string;
   symbol: string;
-  category: 'local' | 'foreign';
+  category: "local" | "foreign";
   industry: string;
   launchDate: string;
   priceRange: string;
-  status: 'upcoming' | 'active' | 'closed';
+  status: "upcoming" | "active" | "closed";
   marketCap: string;
   country: string;
 }
@@ -21,25 +20,29 @@ interface IPOCardProps {
 export default function IPOCard({ ipo }: IPOCardProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'upcoming':
-        return 'bg-amber-100 text-amber-800';
-      case 'active':
-        return 'bg-green-100 text-green-800';
-      case 'closed':
-        return 'bg-gray-100 text-gray-800';
+      case "upcoming":
+        return "bg-amber-100 text-amber-800";
+      case "active":
+        return "bg-green-100 text-green-800";
+      case "closed":
+        return "bg-gray-100 text-gray-800";
       default:
-        return 'bg-gray-100 text-gray-800';
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   const getCategoryIcon = (category: string) => {
-    return category === 'local' ? <Flag className="h-4 w-4" /> : <Globe className="h-4 w-4" />;
+    return category === "local" ? (
+      <Flag className="h-4 w-4" />
+    ) : (
+      <Globe className="h-4 w-4" />
+    );
   };
 
   const getCategoryColor = (category: string) => {
-    return category === 'local' 
-      ? 'bg-blue-100 text-blue-800' 
-      : 'bg-purple-100 text-purple-800';
+    return category === "local"
+      ? "bg-blue-100 text-blue-800"
+      : "bg-purple-100 text-purple-800";
   };
 
   return (
@@ -50,13 +53,23 @@ export default function IPOCard({ ipo }: IPOCardProps) {
             <h3 className="text-base lg:text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
               {ipo.company}
             </h3>
-            <p className="text-xs lg:text-sm text-gray-500 font-mono">{ipo.symbol}</p>
+            <p className="text-xs lg:text-sm text-gray-500 font-mono">
+              {ipo.symbol}
+            </p>
           </div>
           <div className="flex flex-col items-end space-y-1 lg:space-y-2">
-            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(ipo.status)}`}>
+            <span
+              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(
+                ipo.status
+              )}`}
+            >
               {ipo.status.charAt(0).toUpperCase() + ipo.status.slice(1)}
             </span>
-            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getCategoryColor(ipo.category)}`}>
+            <span
+              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getCategoryColor(
+                ipo.category
+              )}`}
+            >
               {getCategoryIcon(ipo.category)}
               <span className="ml-1 capitalize">{ipo.category}</span>
             </span>
@@ -84,11 +97,15 @@ export default function IPOCard({ ipo }: IPOCardProps) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs text-gray-500">Price Range</p>
-              <p className="text-xs lg:text-sm font-semibold text-gray-900">{ipo.priceRange}</p>
+              <p className="text-xs lg:text-sm font-semibold text-gray-900">
+                {ipo.priceRange}
+              </p>
             </div>
             <div className="text-right">
               <p className="text-xs text-gray-500">Market Cap</p>
-              <p className="text-xs lg:text-sm font-semibold text-gray-900">{ipo.marketCap}</p>
+              <p className="text-xs lg:text-sm font-semibold text-gray-900">
+                {ipo.marketCap}
+              </p>
             </div>
           </div>
         </div>

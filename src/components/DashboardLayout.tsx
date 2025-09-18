@@ -18,7 +18,7 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const { user, logout } = useAuth();
   const location = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },

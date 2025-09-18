@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface User {
   id: string;
   email: string;
   name: string;
-  subscription: 'free' | 'pro' | 'enterprise';
+  subscription: "free" | "pro" | "enterprise";
   emailNotifications: boolean;
   msAlerts: boolean;
   smsAlerts: boolean;
@@ -29,56 +29,56 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Simulate checking for existing session
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
     setLoading(false);
   }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string): Promise<boolean> => {
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const mockUser: User = {
-        id: '1',
+        id: "1",
         email,
-        name: email.split('@')[0],
-        subscription: 'free',
+        name: email.split("@")[0],
+        subscription: "free",
         emailNotifications: true,
         msAlerts: true,
         smsAlerts: false,
         localIpoAccess: true,
         foreignIpoAccess: false,
       };
-      
+
       setUser(mockUser);
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      localStorage.setItem("user", JSON.stringify(mockUser));
       return true;
     } catch (error) {
       return false;
     }
   };
 
-  const register = async (email: string, password: string, name: string): Promise<boolean> => {
+  const register = async (email: string, name: string): Promise<boolean> => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const mockUser: User = {
-        id: '1',
+        id: "1",
         email,
         name,
-        subscription: 'free',
+        subscription: "free",
         emailNotifications: true,
         msAlerts: true,
         smsAlerts: false,
         localIpoAccess: true,
         foreignIpoAccess: false,
       };
-      
+
       setUser(mockUser);
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      localStorage.setItem("user", JSON.stringify(mockUser));
       return true;
     } catch (error) {
       return false;
@@ -87,16 +87,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
   };
 
   const updateProfile = async (updates: Partial<User>): Promise<boolean> => {
     try {
       if (!user) return false;
-      
+
       const updatedUser = { ...user, ...updates };
       setUser(updatedUser);
-      localStorage.setItem('user', JSON.stringify(updatedUser));
+      localStorage.setItem("user", JSON.stringify(updatedUser));
       return true;
     } catch (error) {
       return false;
@@ -104,7 +104,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, updateProfile }}>
+    <AuthContext.Provider
+      value={{ user, loading, login, register, logout, updateProfile }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -113,7 +115,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 }
